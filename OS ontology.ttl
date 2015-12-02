@@ -1,0 +1,159 @@
+################# OS Ontology [Calebs contribution] ################
+
+@prefix ietos:      <http://testdata.iet.org/ontologies/operatingsystem/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<http://testdata.iet.org/ontologies/operatingsystem/> rdf:type owl:Ontology ;
+    dcterms:title "Operating System Ontolgoy"@en ;
+	dcterms:created "2015-06-22"^^xsd:date ;
+    dcterms:description "A test ontology for operating systems."@en .
+
+#######  Classes #####
+
+ietos:OperatingSystem rdf:type owl:Class ;
+	rdfs:label "Operating System"@en ;
+	rdfs:comment "A operating system."@en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+
+ietos:Company rdf:type owl:Class ;
+	rdfs:label "Company"@en ;
+	rdfs:comment "Any company."@en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:License rdf:type owl:Class ;
+	rdfs:label "License"@en ;
+	rdfs:comment "Open source or paid licenses."@en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:OpenSource  rdf:type  owl:Class;
+	rdfs:SubClassof ietos:License ;
+	rdfs:label "Open Source" @en ;
+	rdfs:comment "software for which the original source code is made freely available and may be redistributed and modified." @en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:Paid  rdf:type  owl:Class;
+	rdfs:SubClassof ietos:License ;
+	rdfs:label "Paid" @en ;
+	rdfs:comment "software which has to be purchased and for which editing rights must be bought." @en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+
+ietos:Microsoft  rdf:type  owl:Class;
+	rdfs:SubClassof ietos:Company ;
+	rdfs:label "Microsoft" @en ;
+	rdfs:comment "A multinational technology company based in Redmond, Washington." @en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:Apple  rdf:type  owl:Class;
+	rdfs:SubClassof ietos:Company ;
+	rdfs:label "Apple" @en ;
+	rdfs:comment "A multinational technology company based in Cupertino, California." @en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:Google rdf:type  owl:Class;
+	rdfs:SubClassof ietos:Company ;
+	rdfs:label "Google" @en ;
+	rdfs:comment "A multinational technology company specializing in Internet-related services and products." @en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:Windows rdf:type  owl:Class;
+	rdfs:typeof ietos:OperatingSystem ;
+	rdfs:label "Windows" @en ;
+	rdfs:comment "An operating system that is used on all Microsoft products." @en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:Windows10 rdf:type  owl:Class;
+	rdfs:instance ietos:Windows ;
+	rdfs:label "Windows 10" @en ;
+	rdfs:comment "The primary operating system that is used on all Microsoft products after the 29th of July 2015." @en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:Windows8 rdf:type  owl:Class;
+	rdfs:instance ietos:Windows ;
+	rdfs:label "Windows 8" @en ;
+	rdfs:comment "The primary operating system that is used on all Microsoft products after the 1st of August 2012." @en ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+
+	
+#######  Object properties ##### 	
+
+ietos:produces  rdf:type owl:ObjectProperty;
+	rdfs:label "produces"@en ;
+	rdfs:comment "Relates a company to an operating system ."@en ;
+	rdfs:domain ietos:Company ; 
+	rdfs:range ietos:OperatingSystem ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:markets  rdf:type owl:ObjectProperty;
+	rdfs:label "markets"@en ;
+	rdfs:comment "Relates a company to its type of licensing on its avaliable software."@en ;
+	rdfs:domain ietos:Company ;
+	rdfs:range ietos:License ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:markets  rdf:type owl:ObjectProperty;
+	rdfs:label "markets"@en ;
+	rdfs:comment "Relates a company to its type of licensing on its avaliable software."@en ;
+	rdfs:domain ietos:Apple ;
+	rdfs:range ietos:Paid ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:markets  rdf:type owl:ObjectProperty;
+	rdfs:label "markets"@en ;
+	rdfs:comment "Relates a company to its type of licensing on its avaliable software."@en ;
+	rdfs:domain ietos:Microsoft ;
+	rdfs:range ietos:Paid ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:markets  rdf:type owl:ObjectProperty;
+	rdfs:label "markets"@en ;
+	rdfs:comment "Relates a company to its type of licensing on its avaliable software."@en ;
+	rdfs:domain ietos:Google ;
+	rdfs:range ietos:OpenSource ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+	
+ietos:contracts  rdf:type  owl:ObjectProperty;
+	rdfs:label "contracts"@en ;
+	rdfs:comment "Relates licensing to companies."@en ;
+	rdfs:domain ietos:Company ;
+	rdfs:range ietos:License ;
+	
+ietos:typeof  rdf:type  owl:ObjectProperty;
+	rdfs:label "typeof"@en ;
+	rdfs:comment "Relates software to broader term."@en ;
+	rdfs:domain ietos:Operating system;
+	rdfs:range ietos:Windows ;
+	
+ietos:instance  rdf:type  owl:ObjectProperty;
+	rdfs:label "instance"@en ;
+	rdfs:comment "Relates different versions of software to their parent software."@en ;
+	rdfs:domain ietos:Windows10;
+	rdfs:range ietos:Windows ;
+	
+ietos:instance  rdf:type  owl:ObjectProperty;
+	rdfs:label "instance"@en ;
+	rdfs:comment "Relates different versions of software to their parent software."@en ;
+	rdfs:domain ietos:Windows8;
+	rdfs:range ietos:Windows ;
+	
+ietos:is  rdf:type owl:ObjectProperty;
+	rdfs:label "is"@en ;
+	rdfs:comment "Denotes a primary characteristic"@en ;
+	rdfs:domain ietos:Windows ;
+	rdfs:range ietos:Paid ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
+
+
+#######  Data properties #####
+
+ietos:hasCompanyName rdf:type owl:DatatypeProperty ;
+	rdfs:label "hasCompanyName"@en ;
+	rdfs:comment "The company name "@en ;
+	rdfs:domain ietos:Company ;
+	rdfs:range rdf:langString ;
+	rdfs:isDefinedBy <http://testdata.iet.org/ontologies/operatingsystem/> .
